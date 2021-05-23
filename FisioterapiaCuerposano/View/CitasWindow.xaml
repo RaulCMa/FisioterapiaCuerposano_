@@ -1,0 +1,62 @@
+﻿<Window x:Class="FisioterapiaCuerposano.View.CitasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FisioterapiaCuerposano.View"
+        mc:Ignorable="d"
+        Name="Window"
+        Title="CitasWindow"
+        WindowState="Maximized"
+        ResizeMode="NoResize" d:DesignWidth="1635" d:DesignHeight="769">
+    <StackPanel Orientation="Vertical">
+        <DockPanel Height="90">
+            <StackPanel DockPanel.Dock="Top" Height="60" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Fisioterapia Cuerposano" Height="50" FontSize="40" />
+                <Image Source="/Image/image1.png" Margin="15,0,0,0"/>
+            </StackPanel>
+            <DockPanel DockPanel.Dock="Bottom" Height="30">
+                <StackPanel DockPanel.Dock="Left" Width="420" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Fecha:" Margin="10,0,0,0" Height="20"/>
+                    <DatePicker Text="" x:Name="EscogerDiaTextBox" Margin="5,0,0,0" Width="160" Height="20" >
+                        <DatePicker.Resources>
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                    <Button Margin="10,0,0,0" Content="Buscar Día" Width="80" Height="20" Click="BuscarDiaButton_Click" />
+                    <Button Margin="10,0,0,0" Content="Limpiar búsqueda" Width="100" Height="20" Name="LimpiarBusquedaButton" Click="LimpiarBusquedaButton_Click" IsEnabled="{Binding ElementName=EscogerDiaTextBox}"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button  Name="realizarButton" Content="Realizar Cita" Width="80" Margin="0,0,10,0" Height="20" VerticalAlignment="Center" Click="RealizarCitaButton_Click" IsEnabled="{Binding ElementName=ContenedorCitas, Path=SelectedItems.Count}"/>
+                    <Button  Name="aceptarButton" Content="Aceptar Cita" Width="80" Margin="0,0,10,0" Height="20" VerticalAlignment="Center" Click="AceptarCitaButton_Click" IsEnabled="{Binding ElementName=ContenedorCitas, Path=SelectedItems.Count}"/>
+                    <Button  Name="eliminarButton" Content="Eliminar Cita" Width="80" Margin="0,0,10,0" Height="20" VerticalAlignment="Center" Click="EliminarCitaButton_Click" IsEnabled="{Binding ElementName=ContenedorCitas, Path=SelectedItems.Count}"/>
+                    <Button  Content="Añadir Cliente" Width="80" Margin="0,0,10,0" Height="20" VerticalAlignment="Center" Click="AnyadirClienteButtonClick"/>
+                </StackPanel>
+            </DockPanel>
+            
+        </DockPanel>
+        <DockPanel Height="600">
+            <ScrollViewer Margin="15" VerticalScrollBarVisibility="Hidden">
+                <DataGrid  Background="LightGray" x:Name="ContenedorCitas" IsReadOnly="True" SelectionUnit="FullRow" SelectionMode="Single" SelectedItem="IdCita" HorizontalAlignment="Center" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="*" Header="IdCita" Binding="{Binding IdCita}" />
+                        <DataGridTextColumn Width="*" Header="IdCliente" Binding="{Binding IdCliente}"/>
+                        <DataGridTextColumn Width="*" Header="Fecha" Binding="{Binding Fecha}"/>
+                        <DataGridTextColumn Width="*" Header="Aceptada" Binding="{Binding Aceptada}"/>
+                        <DataGridTextColumn Width="*" Header="Realizada" Binding="{Binding Realizada}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </DockPanel>
+        <DockPanel Height="30">
+            
+            <StackPanel Height="20" HorizontalAlignment="Right" Margin="0,0,0,10" Orientation="Horizontal">
+                <Button Margin="0,0,15,0" Content="Actualizar Citas" Width="110" IsEnabled="True" Name="ActualizarButton" Click="ActualizarButton_Click"></Button>
+                <Button Margin="0,0,15,0" Content="Informacion Cliente" Width="110" IsEnabled="{Binding ElementName=ContenedorCitas, Path=SelectedItems.Count}" Name="informacionButton" Click="informacionButton_Click"/>
+                <Button Margin="0,0,15,0" Content="Enviar Notificación" Width="110" IsEnabled="{Binding ElementName=ContenedorCitas, Path=SelectedItems.Count}" Name="notificacionButton" Click="notificacionButton_Click"/>
+            </StackPanel>
+        </DockPanel>
+    </StackPanel>
+</Window>

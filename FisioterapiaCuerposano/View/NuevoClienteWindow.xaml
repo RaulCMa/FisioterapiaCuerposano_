@@ -1,0 +1,27 @@
+﻿<Window x:Class="FisioterapiaCuerposano.View.NuevoClienteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FisioterapiaCuerposano.View"
+        mc:Ignorable="d"
+        Title="NuevoClienteWindow" Height="400" Width="450"
+        ResizeMode="NoResize">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <TextBlock Height="15" Width="150" Text="Nombre"></TextBlock>
+            <TextBox Name="NombreNuevoCliente" Height="20" Width="150" ></TextBox>
+            <TextBlock Height="15" Width="150" Text="Apellidos"></TextBlock>
+            <TextBox Name="ApellidosNuevoCliente" Height="20" Width="150" ></TextBox>
+            <TextBlock Height="15" Width="150" Text="DNI"></TextBlock>
+            <TextBox Name="dniNuevoCliente" Height="20" Width="150" ></TextBox>
+            <TextBlock Height="15" Width="150" Text="Telefono"></TextBlock>
+            <TextBox Name="TelefonoNuevoCliente" Height="20" Width="150" ></TextBox>
+            <TextBlock Height="15" Width="150" Text="Fecha de nacimiento"></TextBlock>
+            <DatePicker Name="fechaNacimientoNuevoCliente"/>
+            <TextBlock Height="15" Width="150" Text="Correo"></TextBlock>
+            <TextBox Name="correoNuevoCliente" Height="20" Width="150" ></TextBox>
+            <Button Content="Validar Cliente" Width="80" Margin="15" Click="ValidarButton_Click"></Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

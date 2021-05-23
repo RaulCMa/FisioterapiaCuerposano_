@@ -1,0 +1,27 @@
+﻿<Window x:Class="FisioterapiaCuerposano.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FisioterapiaCuerposano"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        WindowState="Maximized"
+        ResizeMode="NoResize">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="100" Margin=" 0,150,0,0">
+            <TextBlock Height="50" Text="FISIOTERAPIA" TextAlignment="Center" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontFamily="Palatino" FontSize="50" Margin="0,0,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Height="50" Text="CUERPOSANO" TextAlignment="Center" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontFamily="Palatino" FontSize="50"/>
+                <Image Source="/image/image1.png" Height="50" Width="50"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Height="200" Width="800">
+            <TextBlock Height="20" Width="80" Text="Contraseña" Margin="0,0,75,0" FontSize="15"/>
+            <PasswordBox Name="Password_Box" Height="20" Width="150" Margin="0,5,0,0" PasswordChar="*"/>
+            <Button Name="Registrar_Button" Content="Validar" Width="80" Margin="0,10,0,0" Click="Registrar_Button_Click" /> 
+        </StackPanel>
+    </DockPanel>
+</Window>

@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FisioterapiaCuerposano.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="apiKeyFireBaseEndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAyMHC1Ji---BX9RQMPkOCzVE7zHIBlizc</Value>
+    </Setting>
+    <Setting Name="apiEndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost/usuarios</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
