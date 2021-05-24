@@ -16,7 +16,7 @@
                 <Image Source="/Image/image1.png" Margin="15,0,0,0"/>
             </StackPanel>
             <DockPanel DockPanel.Dock="Bottom" Height="30">
-                <StackPanel DockPanel.Dock="Left" Width="420" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel DockPanel.Dock="Left" Width="750" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBlock Text="Fecha:" Margin="10,0,0,0" Height="20"/>
                     <DatePicker Text="" x:Name="EscogerDiaTextBox" Margin="5,0,0,0" Width="160" Height="20" >
                         <DatePicker.Resources>
@@ -27,6 +27,10 @@
                     </DatePicker>
                     <Button Margin="10,0,0,0" Content="Buscar Día" Width="80" Height="20" Click="BuscarDiaButton_Click" />
                     <Button Margin="10,0,0,0" Content="Limpiar búsqueda" Width="100" Height="20" Name="LimpiarBusquedaButton" Click="LimpiarBusquedaButton_Click" IsEnabled="{Binding ElementName=EscogerDiaTextBox}"/>
+                    <TextBlock Text="DNI:" Margin="20,0,0,0" Height="20"/>
+                    <TextBox Text="" x:Name="EscogerDniTextBox" Margin="5,0,0,0" Width="90" Height="20" />
+                    <Button Margin="10,0,0,0" Content="Buscar Citas" Width="80" Height="20" Click="buscarDniButton_Click" />
+                    <Button Margin="10,0,0,0" Content="Limpiar dni" Width="80" Height="20" Name="LimpiarDniButton" Click="LimpiarDniButton_Click" IsEnabled="{Binding ElementName=EscogerDiaTextBox}"/>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button  Name="realizarButton" Content="Realizar Cita" Width="80" Margin="0,0,10,0" Height="20" VerticalAlignment="Center" Click="RealizarCitaButton_Click" IsEnabled="{Binding ElementName=ContenedorCitas, Path=SelectedItems.Count}"/>

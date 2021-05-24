@@ -29,6 +29,7 @@ namespace FisioterapiaCuerposano.ViewModel
 
         public static void cambiarAceptadaCita(Cita c)
         {
+            c.Aceptada=1;
             _apiRest.PutCitaAceptada(c);
             MessageBox.Show("Se ha cambiado la cita " + c.IdCita, "Cambio cita", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -69,6 +70,11 @@ namespace FisioterapiaCuerposano.ViewModel
         internal static Cliente getCliente(int idCliente)
         {
             return _apiRest.getCliente(idCliente);
+        }
+
+        internal static Cliente getCliente(string dni)
+        {
+            return _apiRest.getClienteDni(dni);
         }
 
         internal static int getCantidadClientesConDni(string dni)

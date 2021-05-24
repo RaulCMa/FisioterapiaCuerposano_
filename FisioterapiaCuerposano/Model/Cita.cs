@@ -13,32 +13,35 @@ namespace FisioterapiaCuerposano.Model
 
         public int IdCliente { get; set; }
         public DateTime Fecha { get; set; }
-        public int _aceptada;
-        public int Aceptada 
-        {
-            get { return this._aceptada; }
-            set
-            {
-                if (this._aceptada != value)
-                {
-                    this._aceptada = value;
-                    this.NotifyPropertyChanged("Aceptada");
-                }
-            }
-        }
-        public int _realizada;
-        public int Realizada
-        {
-            get { return this._realizada; }
-            set
-            {
-                if (this._realizada != value)
-                {
-                    this._realizada = value;
-                    this.NotifyPropertyChanged("Realizada");
-                }
-            }
-        }
+        public int Aceptada { get; set; }
+        public int Realizada { get; set; }
+
+        //public int _aceptada;
+        //public int Aceptada 
+        //{
+        //    get { return this._aceptada; }
+        //    set
+        //    {
+        //        if (this._aceptada != value)
+        //        {
+        //            this._aceptada = value;
+        //            this.NotifyPropertyChanged("Aceptada");
+        //        }
+        //    }
+        //}
+        //public int _realizada;
+        //public int Realizada
+        //{
+        //    get { return this._realizada; }
+        //    set
+        //    {
+        //        if (this._realizada != value)
+        //        {
+        //            this._realizada = value;
+        //            this.NotifyPropertyChanged("Realizada");
+        //        }
+        //    }
+        //}
 
         public Cita()
         {

@@ -83,15 +83,14 @@ namespace FisioterapiaCuerposano.View
 
         private void AceptarCitaButton_Click(object sender, RoutedEventArgs e)
         {
-            Cita c = (Cita)ContenedorCitas.SelectedItem;
-            // CONSULTA PARA REALIZADA DE ESTA CITA ACEPTADA = TRUE
-            //ViewModel.AdministrarVM.borrarCita(cita.IdCita);
-            //Cita nuevaCita = new Cita(cita.IdCita, cita.IdCliente, cita.Fecha, 1, 0);
-            //ViewModel.AdministrarVM.PostCita(nuevaCita);
-            //MessageBox.Show("La cita " + ((Cita)ContenedorCitas.SelectedItem).IdCita + " ha sido ACEPTADA.");
-            ViewModel.AdministrarVM.cambiarAceptadaCita(c);
+            cita = (Cita)ContenedorCitas.SelectedItem;
+            Cita nuevaCita = new Cita(cita.IdCita, cita.IdCliente, cita.Fecha, 1, 0);
+            ViewModel.AdministrarVM.borrarCita(cita.IdCita);
+            ViewModel.AdministrarVM.PostCita(nuevaCita);
+            MessageBox.Show("La cita " + nuevaCita.IdCita + " ha sido ACEPTADA.");
+            //ViewModel.AdministrarVM.cambiarAceptadaCita(cita);
 
-            //ActualizaCitas();
+            ActualizaCitas();
         }
 
         private void EliminarCitaButton_Click(object sender, RoutedEventArgs e)
@@ -590,6 +589,30 @@ namespace FisioterapiaCuerposano.View
 
             MessageBox.Show(result);
             return result;
+        }
+
+        private void LimpiarDniButton_Click(object sender, RoutedEventArgs e)
+        {
+            EscogerDniTextBox.Text = "";
+            ActualizaCitas();
+        }
+
+        private void buscarDniButton_Click(object sender, RoutedEventArgs e)
+        {
+            string dni = EscogerDniTextBox.Text;
+            if (dni != "")
+            {
+                c = ViewModel.AdministrarVM.getCliente(dni);
+                ObservableCollection<Cita> citas2 = new ObservableCollection<Cita>();
+                foreach (Cita c1 in citas)
+                {
+                    if (c.IdCliente == c1.IdCliente)
+                        citas2.Add(c1);
+                    citas2 = new ObservableCollection<Cita>(citas2.OrderBy(x => x.Fecha));
+                    ContenedorCitas.ItemsSource = citas2;
+                }
+            }
+            else MessageBox.Show("No es el formato correcto.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

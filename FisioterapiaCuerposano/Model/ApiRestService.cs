@@ -32,17 +32,14 @@ namespace FisioterapiaCuerposano.Model
 
         internal IRestResponse PutCitaAceptada(Cita citaAAceptar)
         {
-            Cita cita = new Cita(citaAAceptar.IdCita, citaAAceptar.IdCliente, citaAAceptar.Fecha, 1, citaAAceptar.Realizada);
+            //Cita cita = new Cita(citaAAceptar.IdCita, citaAAceptar.IdCliente, citaAAceptar.Fecha, 1, citaAAceptar.Realizada);
             var client = new RestClient(Properties.Settings.Default.apiEndPoint);
-            var request = new RestRequest($"Cita/idcita/{cita.IdCita}", Method.PUT);
-            string data = JsonConvert.SerializeObject(cita);
-            MessageBox.Show(citaAAceptar.toString());
-            
-            MessageBox.Show(JsonConvert.SerializeObject(cita));
-            string dataa = "{\"IdCita\":" + citaAAceptar.IdCita + ",\"IdCliente\":" + citaAAceptar.IdCliente + ",\"Fecha\":" + citaAAceptar.Fecha + "\",\"Aceptada\":1,\"Realizada\":0}";
-            MessageBox.Show(data);
-            request.AddParameter("application/json", dataa, ParameterType.RequestBody);
+            var request = new RestRequest($"Cita/idCita/{citaAAceptar.IdCita}", Method.PUT);
+            string data = JsonConvert.SerializeObject(citaAAceptar);
+            //string dataa = "{\"IdCita\":" + citaAAceptar.IdCita + ",\"IdCliente\":" + citaAAceptar.IdCliente + ",\"Fecha\":" + citaAAceptar.Fecha + "\",\"Aceptada\":1,\"Realizada\":0}";
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
             var response = client.Execute(request);
+            //MessageBox.Show(response.Content);
             return response;
         }
 
@@ -58,10 +55,18 @@ namespace FisioterapiaCuerposano.Model
             return response;
         }
 
+        internal Cliente getClienteDni(string dni)
+        {
+            var client = new RestClient(Properties.Settings.Default.apiEndPoint);
+            var request = new RestRequest($"/Cliente/dni/{dni}", Method.GET);
+            var response = client.Execute(request);
+            return JsonConvert.DeserializeObject<ObservableCollection<Cliente>>(response.Content).First();
+        }
+
         internal IRestResponse DeleteCita(int idCitaABorrar)
         {
             var client = new RestClient(Properties.Settings.Default.apiEndPoint);
-            var request = new RestRequest($"Cita/{idCitaABorrar}", Method.DELETE);
+            var request = new RestRequest($"/Cita/{idCitaABorrar}", Method.DELETE);
             var response = client.Execute(request);
             return response;
         }
@@ -69,7 +74,7 @@ namespace FisioterapiaCuerposano.Model
         internal Cita GetCita(int idCita)
         {
             var client = new RestClient(Properties.Settings.Default.apiEndPoint);
-            var request = new RestRequest($"Cita/idCita/{idCita}", Method.GET);
+            var request = new RestRequest($"/Cita/idCita/{idCita}", Method.GET);
             var response = client.Execute(request);
             return JsonConvert.DeserializeObject<ObservableCollection<Cita>>(response.Content).First();
         }
@@ -77,7 +82,7 @@ namespace FisioterapiaCuerposano.Model
         internal Cliente getCliente(int idCliente)
         {
             var client = new RestClient(Properties.Settings.Default.apiEndPoint);
-            var request = new RestRequest($"/Cliente/idCliente/{idCliente}", Method.GET);
+            var request = new RestRequest($"Cliente/idCliente/{idCliente}", Method.GET);
             var response = client.Execute(request);
             return JsonConvert.DeserializeObject<ObservableCollection<Cliente>>(response.Content).First();
         }
@@ -95,8 +100,10 @@ namespace FisioterapiaCuerposano.Model
             var client = new RestClient(Properties.Settings.Default.apiEndPoint);
             var request = new RestRequest("Cliente", Method.POST);
             string data = JsonConvert.SerializeObject(nuevoCliente);
+            MessageBox.Show(data);
             request.AddParameter("application/json", data, ParameterType.RequestBody);
             var response = client.Execute(request);
+            MessageBox.Show(response.StatusCode.ToString());
             return response;
         }
         internal IRestResponse PostCita(Cita nuevaCita)
